@@ -4,19 +4,18 @@ package ATM;
 import java.util.Scanner;
 import java.io.IOException;
 
-//All the Exceptions are thrown by throw keyword.
 public class ATM {
 	//declaring Scanner as a field to close the resource leak of input Stream.
 	private static Scanner scn;
 
 	public static void main(String[] args) throws IOException,Exception{
 		scn = new Scanner(System.in);
+		//Check if it's next day and reset's the total denominations.
+		Data.isItNextDay();
 		//The code always runs until you close the console
 		while(true) {
 			//To not stop code from running when an error is occurred.
 			try {
-				//Check if it's next day and reset's the total denominations.
-				Data.isItNextDay();
 				System.out.println("...WELCOME to IITTP ATM...\n\n1. Login in\n2. Create a new account");
 				//Taking all the inputs of the code from the user as a String so that when user press any key instead of numbers the code works.
 				String consoleIndex1  = scn.nextLine();

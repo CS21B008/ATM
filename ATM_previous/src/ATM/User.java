@@ -2,7 +2,6 @@ package ATM;
 
 public class User {
 	String AccType;
-	//making AccNo,name,Pin,balance private for security.
 	private int AccNo;
 	private String name;
 	private String Pin;
@@ -16,9 +15,7 @@ public class User {
 		this.Amount = amount;
 		this.triesLeft = triesLeft;
 	}
-	//creating an empty argument constructor so as to use "new user()".
 	User(){}
-	//creating getter and setters for all private variables.
 	public int getAccNo() {
 		return AccNo;
 	}

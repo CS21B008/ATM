@@ -3,12 +3,8 @@ package ATM;
 import java.util.*;
 import java.io.*;
 
-//All the Exceptions are thrown by throw keyword.
-// creating an abstract class Denomination so that it can represent and be inherited by withdrawStatement and depositStatement.
 abstract class Denominations{
 
-	//Here NoOfX indicates how X denominations are present in ATM
-	//noOfX indicates how X denominations are currently being withdrawn or deposited.
 	int NoOf2000 = 2000;
 	int NoOf500 = 2000;
 	int NoOf200 = 2000;
@@ -29,11 +25,8 @@ abstract class Denominations{
 	int noOf5=0;
 	int noOf2=0;
 	int noOf1=0;
-	//No Arguments constructor needed to create objects like "new withdrawStatement()".
-	//if not created it will go to the other mentioned constructor in the code and we can't use an empty argument constructor. 
+	//No Arguments constructor to create objects like "new withdrawStatement()".if not created it will go to the other mentioned constructor and we can't use an empty argument constructor. 
 	Denominations() throws IOException,Exception,NumberFormatException{
-		//empty constructor set the number of denominations based on database.
-		//this method gets the data from the file.
 		Data.getNotesData();
 	}
 	Denominations(int NoOf2000,int NoOf500,int NoOf200,int NoOf100,int NoOf50,int NoOf20,int NoOf10,int NoOf5,int NoOf2,int NoOf1){
@@ -49,13 +42,11 @@ abstract class Denominations{
 		this.NoOf1 = NoOf1;
 	}
 	
-	//here we can use both denominations(int) and denominations(String) by polymorphism.
 	protected  void denominations(String s) {
 		if(Check.checkInt(s)) denominations(Integer.parseInt(s));
 		else System.out.println("ERROR");
 	}
 	
-	//this method creates one of of the possible denominations of the given integer.
 	protected  void denominations(int i) {
 		int amm = i;
 		noOf2000 = amm/2000;
@@ -79,7 +70,6 @@ abstract class Denominations{
 		noOf1 = amm;
 	}
 	
-	//this method checks if the number of required denominations are present in the ATM or not.
 	protected boolean checkamm() throws IOException{
 		if(NoOf2000<noOf2000) return false;
 		else NoOf2000 = NoOf2000-noOf2000;
@@ -105,7 +95,6 @@ abstract class Denominations{
 		return true;
 	}
 	
-	//this method resets the  denominations that are currently being withdrawn or deposited.
 	protected void close() {
 		noOf2000=0;
 		noOf500=0;
@@ -120,14 +109,11 @@ abstract class Denominations{
 	}
 }
 
-//we create an interface Statement to print statement of deposit or withdrawal.
 interface Statement{
 	public void statement(User u, int i);
 }
-
 class withdrawStatement extends Denominations implements Statement{
 
-	//no arguments constructor.
 	withdrawStatement() throws IOException,Exception,NumberFormatException{
 		Data.getNotesData();
 	}
@@ -135,12 +121,10 @@ class withdrawStatement extends Denominations implements Statement{
 		super(NoOf2000, NoOf500, NoOf200, NoOf100, NoOf50, NoOf20, NoOf10, NoOf5, NoOf2, NoOf1);
 	}
 
-	//implementing the interface method.
 	public void statement(User u, int withdraw) {
 		System.out.println("Name: "+u.getName()+"\nAccount number: "+u.getAccNo()+"\nAmount withdrawn: "+withdraw+"\nBalance: "+u.getAmount());
 	}
 	
-	//creates and prints the type and number of denominations and returns true if money is present in the ATM.
 	public boolean withdrawDenominations(int i) throws IOException{
 		super.denominations(i);
 		if(checkamm()) {
@@ -173,12 +157,10 @@ class depositStatement extends Denominations implements Statement{
 
 	private static Scanner scn;
 	
-	//creating a slightly different method from the before mentioned method.
 	 public void statement(User u, int deposit) {
 		 System.out.println("Name: "+u.getName()+"\nAccount number: "+u.getAccNo()+"\nAmount deposited: "+deposit+"\nBalance: "+u.getAmount());
 	 }
 	 
-	 //This method asks the black box about the type and number of denominations and returns the total.
 	 public int depositDenominations() throws Exception{
 		 scn = new Scanner(System.in);
 		 System.out.println("Number of 2000 notes: ");
