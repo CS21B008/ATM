@@ -89,28 +89,17 @@ public class Data {
 	}
 	
 	//this sets the data file of Notes by the giving values.
-	protected static void setNotesData(int NoOf2000,int NoOf500,int NoOf200,int NoOf100,int NoOf50,int NoOf20,int NoOf10,int NoOf5,int NoOf2,int NoOf1) throws NumberFormatException, Exception{
+	protected static void setNotesData(int NoOf2000,int NoOf500,int NoOf200,int NoOf100,int NoOf50,int NoOf20,int NoOf10,int NoOf5,int NoOf2,int NoOf1) throws IOException{
 		File Notesfile = new File("Notes.txt");
 		Notesfile.createNewFile();
 		FileWriter Fwrite = new FileWriter(Notesfile);
 		Fwrite.write(NoOf2000+"\n"+NoOf500+"\n"+NoOf200+"\n"+NoOf100+"\n"+NoOf50+"\n"+NoOf20+"\n"+NoOf10+"\n"+NoOf5+"\n"+NoOf2+"\n"+NoOf1);
 		Fwrite.close();
-		depositStatement d = new depositStatement();
-		d.NoOf2000 = NoOf2000;
-		d.NoOf500 = NoOf500;
-		d.NoOf200 = NoOf200;
-		d.NoOf100 = NoOf100;
-		d.NoOf50 = NoOf50;
-		d.NoOf20 = NoOf20;
-		d.NoOf10 = NoOf10;
-		d.NoOf5 = NoOf5;
-		d.NoOf2 = NoOf2;
-		d.NoOf1 = NoOf1;
 	}
 	
 	//this methods checks the data file called date and compare it with current date.
 	//and if  the the dates are not equals it will reset the file to current date and resets the number of denominations
-	protected static void isItNextDay() throws NumberFormatException, Exception{
+	protected static void isItNextDay() throws IOException,ParseException{
 		File Fdate = new File("date.txt");
 		File Notesfile = new File("Notes.txt");
 		//sets the format of Date.

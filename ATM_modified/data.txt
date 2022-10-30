@@ -1,8 +1,8 @@
 Current
 94601
 mvsk
-269
-2550
+629
+2800
 3
 
 Savings
@@ -16,13 +16,6 @@ Savings
 46951
 vi
 543
-1000
-3
-
-Savings
-83275
-atm
-123
 1000
 3
 

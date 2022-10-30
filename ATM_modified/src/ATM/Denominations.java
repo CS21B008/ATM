@@ -80,27 +80,27 @@ abstract class Denominations{
 	}
 	
 	//this method checks if the number of required denominations are present in the ATM or not.
-	protected boolean checkamm() throws NumberFormatException, Exception{
+	protected boolean checkamm() throws IOException{
 		if(NoOf2000<noOf2000) return false;
+		else NoOf2000 = NoOf2000-noOf2000;
 		if(NoOf500<noOf500) return false;
+		else NoOf500 = NoOf500-noOf500;
 		if(NoOf200<noOf200) return false;
+		else NoOf200 = NoOf200-noOf200;
 		if(NoOf100<noOf100) return false;
+		else NoOf100 = NoOf100-noOf100;
 		if(NoOf50<noOf50) return false;
+		else NoOf50 = NoOf50-noOf50;
 		if(NoOf20<noOf20) return false;
+		else NoOf20 = NoOf20-noOf20;
 		if(NoOf10<noOf10) return false;
+		else NoOf10 = NoOf10-noOf10;
 		if(NoOf5<noOf5) return false;
+		else NoOf5 = NoOf5-noOf5;
 		if(NoOf2<noOf2) return false;
+		else NoOf2 = NoOf2-noOf2;
 		if(NoOf1<noOf1) return false;
-		NoOf2000 = NoOf2000-noOf2000;
-		NoOf500 = NoOf500-noOf500;
-		NoOf200 = NoOf200-noOf200;
-		NoOf100 = NoOf100-noOf100;
-		NoOf50 = NoOf50-noOf50;
-		NoOf20 = NoOf20-noOf20;
-		NoOf10 = NoOf10-noOf10;
-		NoOf5 = NoOf5-noOf5;
-		NoOf2 = NoOf2-noOf2;
-		NoOf1 = NoOf1-noOf1;
+		else NoOf1 = NoOf1-noOf1;
 		Data.setNotesData(NoOf2000, NoOf500, NoOf200, NoOf100, NoOf50, NoOf20, NoOf10, NoOf5, NoOf2, NoOf1);
 		return true;
 	}
@@ -141,7 +141,7 @@ class withdrawStatement extends Denominations implements Statement{
 	}
 	
 	//creates and prints the type and number of denominations and returns true if money is present in the ATM.
-	public boolean withdrawDenominations(int i) throws NumberFormatException, Exception{
+	public boolean withdrawDenominations(int i) throws IOException{
 		super.denominations(i);
 		if(checkamm()) {
 			System.out.println("Amount in the box below");

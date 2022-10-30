@@ -6,7 +6,7 @@ public class User {
 	private int AccNo;
 	private String name;
 	private String Pin;
-	private int Amount;
+	private int Amount=500;
 	int triesLeft=3;
 	User(String AccType, int AccNo, String name, String Pin, int amount, int triesLeft){
 		this.AccType = AccType;
